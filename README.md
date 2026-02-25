@@ -230,7 +230,8 @@ contact-center-risk-governance/
 ├── dashboard/         # Power BI (.pbix) files
 ├── docs/              # Technical documentation (DAX, Dictionary, Logic)
 ├── screenshot/        # Dashboard images for review
-└── README.md          # Project overview
+├── README.md          # Project overview                
+└── LICENSE            # MIT License
 ```
 ---
 
