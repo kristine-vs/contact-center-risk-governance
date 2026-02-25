@@ -295,15 +295,27 @@ These constraints are intentional to preserve confidentiality.
 
 ---
 
-## Future Enhancements
+## Future Enhancements: Phase 2 (Structural Entropy & Governance Scalability)
 
-* Time-series policy change simulation
-* Agent learning curves
-* Advanced data quality failures
-* Audit sampling models
-* Economic impact modeling
-* Case lifecycle tracking
+The next phase of this project moves beyond static auditing into **Dynamic Environment Management**, simulating the real-world "horror" of cross-functional data dependency and shifting business rules. This phase focuses on modeling organizational complexity rather than data cleanliness,
+reflecting the primary source of failure in mature enterprise environments.
 
+### 1. Definition Drift & Policy Versioning
+* **Objective:** Simulate a mid-year shift in Legal taxonomies (e.g., a stricter definition of "Vulnerability").
+* **Technical Goal:** Implement a **Policy Versioning Table** to prevent "Metric Drift" and show how the dashboard handles mathematically incompatible year-over-year definitions without breaking.
+
+### 2. Multi-Channel Silo Divergence (LOB Splits)
+* **Objective:** De-couple Chat and Call escalation processes. Launch a "Platinum Shopper" LOB with unique compliance triggers that differ from "Legacy Blue" workflows.
+* **Technical Goal:** Build a **Unified Governance Mapping** layer to reconcile disparate department rules into a single, site-wide Risk Score.
+
+### 3. Training-to-Audit Feedback Loops
+* **Objective:** Integrate messy, siloed "Agent Recertification" data from Training teams to identify the correlation between "Training Decay" and recent compliance failures.
+* **Technical Goal:** Create a "Compliance vs. Recency" scatter plot to predict when an agent moves from "Low Risk" to "Zero-Tolerance Liability."
+
+### 4. Advanced Economic Impact Modeling
+* **Objective:** Move from "Labor Waste" calculations into **Regulatory Penalty Projections**.
+* **Technical Goal:** Assign weighted dollar values to specific "Legal Mention" categories based on historical CFPB/FTC fine averages to project total "At-Risk Dollars."
+  
 ---
 
 ## Author
