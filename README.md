@@ -17,6 +17,14 @@ It demonstrates how raw operational data can be transformed into a structured, a
 Because banking and regulatory data is highly sensitive, this project uses a custom-built Python simulation engine to generate a synthetic dataset of 5,000 records.
 The data reflects realistic operational patterns, agent tenure–based error rates, and legal phrase taxonomies without compromising confidentiality.
 
+## Data Engineering: The Simulation Engine
+
+To create a realistic auditing environment, I developed `dataset_generation.ipynb` using Python (Pandas, NumPy, Faker). The engine doesn't just randomize data; it applies **weighted business rules**:
+
+* **Queue-Based Risk Weighting:** Queues like 'Collections' and 'Fraud' have a statistically higher probability of legal triggers compared to 'General Inquiry.'
+* **Tenure-Based Failure Injection:** The simulation applies a higher probability of escalation failure (Missed/Failed) to agents with <6 months of tenure, simulating a realistic training gap.
+* **Malicious Behavior Simulation:** Injected "Process Dumping" (Invalid Dispositions) where agents use escalation tags on normal calls to reduce their workload, and "Agent Hangups" specifically during high-friction legal threats.
+
 ---
 
 ## Business Problem
@@ -82,8 +90,9 @@ The Power BI solution is organized into three functional layers.
 ---
 
 ### 1. Governance Overview
-
 Executive-level monitoring of organizational risk exposure.
+* **Primary Risk Drivers:** A Decomposition Tree for root-cause analysis.
+* **Threshold-Based Alerts:** KPI cards turn Red/Yellow based on the percentage density of risk, providing a unified governance signal.
 
 Key Features:
 
@@ -98,12 +107,24 @@ Bookmark Views:
 * All Risk / Legal Focus
 * Call / Chat channels
 
+### Governance Overview — All Risk
+
+![Governance Overview - All Risk](screenshot/governance_overview_all_risk.png)
+
+---
+
+### Governance Overview — Legal Focus
+
+![Governance Overview - Legal Focus](screenshot/governance_overview_legal_focus.png)
+
+
 ---
 
 ### 2. Compliance Audit
-
 Audit-ready interaction review for quality assurance and investigation.
-
+* **Evidence Tracking:** Captures the specific legal phrase or vulnerability trigger for auditor review.
+* **Hangup Detection:** Identifies agents who disconnected calls during legal threats.
+  
 Key Features:
 
 * Row-level interaction logs
@@ -112,11 +133,14 @@ Key Features:
 * Legal phrase evidence tracking
 * Transfer validation
 
+![Compliance Audit](screenshot/compliance_audit.png)
+
 ---
 
 ### 3. Agent Compliance
-
 Performance and coaching analytics for frontline staff.
+* **Governance Accuracy Status:** A dynamic rating system (Excellent to Critical) that protects against "Null" data false alarms.
+* **Coaching Prioritization:** Identifies agents with high "Missed Escalation" rates.
 
 Key Features:
 
@@ -125,6 +149,9 @@ Key Features:
 * Governance accuracy scoring
 * Process dumping detection
 * Coaching prioritization
+
+![Agent Compliance](screenshot/agent_compliance.png)
+
 
 ---
 
@@ -182,32 +209,6 @@ These classifications power all compliance metrics.
 * Invalid Disposition Rate
 * Agent Hangups
 * Average Handle Time
-
----
-
-## Screenshots
-
-### Governance Overview — All Risk
-
-![Governance Overview - All Risk](screenshot/governance_overview_all_risk.png)
-
----
-
-### Governance Overview — Legal Focus
-
-![Governance Overview - Legal Focus](screenshot/governance_overview_legal_focus.png)
-
----
-
-### Compliance Audit
-
-![Compliance Audit](screenshot/compliance_audit.png)
-
----
-
-### Agent Compliance
-
-![Agent Compliance](screenshot/agent_compliance.png)
 
 ---
 
