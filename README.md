@@ -236,7 +236,7 @@ contact-center-risk-governance/
 ## How to Use This Repository
 
 1. View the Dashboard
-   Download the `.pbix` file from the `dashboards/` folder.
+   Download the `.pbix` file from the `dashboard/` folder.
 
 2. Review the Logic
    See `docs/` for DAX measures and governance rules.
