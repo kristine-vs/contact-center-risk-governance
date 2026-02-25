@@ -226,7 +226,7 @@ These classifications power all compliance metrics.
 contact-center-risk-governance/
 │
 ├── data/              # Raw synthetic datasets
-├── dashboard/        # Power BI (.pbix) files
+├── dashboard/         # Power BI (.pbix) files
 ├── docs/              # Technical documentation (DAX, Dictionary, Logic)
 ├── screenshot/        # Dashboard images for review
 └── README.md          # Project overview
