@@ -1,3 +1,33 @@
+# Audit Findings & Operational Analysis
+
+## Overview
+This document presents the key findings and operational recommendations derived from the **Legal Risk & Escalation Governance Dashboard**. 
+
+Unlike traditional reporting that prioritizes surface-level efficiency (AHT or volume), this analysis evaluates the **control integrity** of the organization's escalation framework. The objective is threefold:
+1. **Identify** systemic weaknesses in escalation governance.
+2. **Quantify** operational and regulatory risk exposure.
+3. **Translate** analytical insights into actionable management controls.
+
+---
+
+## Methodology & Scope
+The findings in this report are grounded in a defensible review of:
+* **Outcome Analysis:** Evaluation of escalation validity vs. ground-truth risk.
+* **Performance Variance:** Analysis of compliance rates across different agent tenure bands and communication channels.
+* **Behavioral Audits:** Review of agent disposition and disconnect patterns.
+* **Year-Over-Year Trends:** Benchmarking 2026 performance against 2025 baselines.
+
+---
+
+## Strategic Priority
+This report intentionally prioritizes **regulatory defensibility** and **customer protection** over traditional productivity indicators. Each section below examines a specific failure pattern, its root cause, and the associated business risk.
+
+The recommendations provided are designed to support:
+* **Targeted Coaching:** Moving away from "blanket" training.
+* **Policy Reinforcement:** Closing the gap between SOP and execution.
+* **Risk-Based Staffing:** Aligning veteran talent with high-risk queues.
+---
+
 ### A. The Tenure Paradox: "Complacency Over Competency"
 Contrary to traditional expectations that new hires pose the greatest risk, the data reveals a dangerous "Complacency Gap" among veteran staff.
 
@@ -21,7 +51,7 @@ Data identifies a significant drain on senior resources caused by improper use o
 
 * **Finding:** The **Invalid Disposition Rate** is **17.5%**, representing **875 interactions** where no risk was detected, yet an escalation tag was utilized.
 * **Insight:** This "Process Dumping" behavior suggests that frontline agents are offloading difficult but standard customer inquiries to specialist queues. 
-* **Labor Impact:** Assuming an average specialist handle time of 10 minutes per review, these 875 invalid escalations represent **~145 hours of wasted senior specialist labor** per period. This is labor that could be redirected toward high-value litigation mitigation or regulatory responses.
+* **Labor Impact:** Assuming an average specialist handle time of 30 minutes per review, these 875 invalid escalations represent **~437.5 hours of wasted senior specialist labor** per period. This is labor that could be redirected toward high-value litigation mitigation or regulatory responses.
 
 ---
 
@@ -31,3 +61,10 @@ Audit data reveals a severe breach of protocol regarding call disconnections dur
 * **Finding:** In 2025, agents disconnected **18 confirmed risk interactions**. These hangups resulted in a **50/50 split between Missed and Failed Escalations**, proving a mix of both ignorance and intentional avoidance.
 * **Finding:** **8 of the 18 hangups** involved direct legal threats, and **10 of the 18** were concentrated specifically in the **Collections and Credit Line** queues.
 * **Insight:** This is identified as "avoidance behavior." Agents in high-stress financial queues are likely disconnecting calls to bypass the emotional and procedural burden of a legal escalation, creating a "Zero-Tolerance" regulatory exposure.
+
+---
+
+## Author
+
+**Kristine Soliman**  
+Data & Operations Analyst | Chandler, AZ  
