@@ -155,6 +155,28 @@ Key Features:
 
 ---
 
+## Executive Summary of Findings
+
+This project uncovered four critical operational risks that traditional efficiency metrics failed to surface. These insights provide a defensible roadmap for regulatory remediation.
+
+### 1. The Tenure Paradox (Digital Complacency)
+* **Finding:** Audit data revealed that **100% of missed legal escalations** in Chat channels were attributed to agents with **6+ months of tenure**. 
+* **Insight:** Veteran agents exhibit "skimming" behavior in multi-chat environments, prioritizing speed over the detection of subtle, implied legal triggers.
+
+### 2. The Collections Crisis (Year-Over-Year Drift)
+* **Finding:** The **Collections** queue compliance gap surged from **11% in 2025 to 20% in 2026**, despite legal volume remaining steady at 36%.
+* **Insight:** This indicates a systemic breakdown in internal controls rather than a change in customer behavior, requiring an immediate policy audit.
+
+### 3. Operational Waste (Process Dumping)
+* **Finding:** The **Invalid Disposition Rate** sits at **17.5%**, representing **875 unnecessary escalations**.
+* **Labor Impact:** At an average specialist handle time of 30 minutes, this represents **~437.5 hours of wasted senior labor** per period, resources that should be redirected to litigation defense.
+
+### 4. Zero-Tolerance Failures (Malicious Hangups)
+* **Finding:** Identified **18 confirmed risk interactions** where agents disconnected the call. **8 of these** involved direct legal threats.
+* **Insight:** Concentration in the Collections and Credit Line queues suggest "avoidance behavior" during high-friction interactions, posing a severe regulatory risk.
+
+---
+
 ## Dataset Design & Risk Taxonomy
 
 The dataset was engineered in Python to simulate worst-case regulatory risk scenarios.
@@ -226,12 +248,26 @@ These classifications power all compliance metrics.
 ```text
 contact-center-risk-governance/
 │
-├── data/              # Raw synthetic datasets
-├── dashboard/         # Power BI (.pbix) files
-├── docs/              # Technical documentation (DAX, Dictionary, Logic)
-├── screenshot/        # Dashboard images for review
-├── README.md          # Project overview                
-└── LICENSE            # MIT License
+├── dashboard/          # Power BI dashboard files
+│   └── Legal Risk & Escalation Governance.pbix
+│
+├── data/               # Synthetic data & generation scripts
+│   ├── Interactions.csv
+│   └── dataset_generation.ipynb
+│
+├── docs/               # Technical & governance documentation
+│   ├── data_dictionary.md
+│   ├── dax_library.md
+│   └── findings_recommendations.md
+│
+├── screenshot/         # Dashboard screenshots
+│   ├── agent_compliance.png
+│   ├── compliance_audit.png
+│   ├── governance_overview_all_risk.png
+│   ├── governance_overview_legal_focus.png
+│
+├── README.md           # Project overview
+└── LICENSE             # MIT License
 ```
 ---
 
