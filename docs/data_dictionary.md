@@ -51,8 +51,8 @@ Demographic and account-level data used to identify high-value or high-risk segm
 
 ### tenure_months
 **Type:** Integer  
-**Description:** The length of the customer's relationship with the bank.  
-**Role:** Context for sentiment and loyalty analysis.
+**Description:** Total months of the customer's relationship with the bank.  
+**Role:** Provides context for loyalty analysis and recurring legal or risk behavior patterns.
 
 ---
 
@@ -77,8 +77,8 @@ Data points reflecting the mechanics of the interaction and agent efficiency.
 
 ### sentiment_score
 **Type:** Float  
-**Description:** NLP-generated score ranging from -1.0 (Very Negative) to 1.0 (Very Positive).  
-**Role:** Used to prioritize audits for interactions with high friction.
+**Description:** Simulated NLP-derived score ranging from -1.0 (Very Negative) to 1.0 (Very Positive).  
+**Role:** Used to prioritize audits for interactions with high friction and emotional volatility.
 
 ### disconnected_by
 **Type:** String  
@@ -123,8 +123,34 @@ The primary drivers for the governance framework and compliance metrics.
 
 ### escalation_validity
 **Type:** String  
-**Description:** The final audit outcome (Valid, Missed, Failed, or Invalid).  
-**Role:** **Master Driver for all KPIs.** Defines the operational health of the system.
+**Description:** The final audit outcome classification (Valid, Missed, Failed, Invalid, Review, or No Escalation Required).  
+**Role:** **Master Driver for all Governance KPIs.** This field defines the Risk Universe and escalation outcome classification used in compliance and accuracy calculations.
+
+---
+
+## 5. Derived Metadata Fields (Calculated in Power BI)
+
+The following fields are calculated within the semantic layer and are not part of the raw dataset. These derived columns support risk classification, metric logic, and reporting segmentation.
+
+### Is_Risk
+**Type:** Boolean  
+**Description:** Indicates whether the interaction contains Legal, Vulnerability, or Abuse risk.  
+**Role:** Primary flag used to define the Risk Universe in compliance metrics.
+
+### Risk_Type
+**Type:** String  
+**Description:** Categorizes the interaction as Legal, Vulnerability, Abuse, or None based on scenario labeling.  
+**Role:** Enables segmented reporting and compliance gap analysis by risk category.
+
+### Legal_Category
+**Type:** String  
+**Description:** Subclassification of Legal risk (Litigation, Explicit Regulatory, Inexplicit, Implied, None).  
+**Role:** Supports legal severity reporting and targeted regulatory monitoring.
+
+### Tenure_Band
+**Type:** String  
+**Description:** Categorizes agents into tenure groups (< 6 Months, 6+ Months).  
+**Role:** Enables training gap analysis and tenure-based compliance performance evaluation.
 
 ---
 
