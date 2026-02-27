@@ -29,6 +29,47 @@ The model is designed to prevent metric distortion caused by cross-filtering and
 **Records Under Review**
 `Records Under Review = COUNTROWS(Interactions)`
 
+**Count Valid Escalations**
+`Count Valid Escalations = 
+COALESCE(
+    CALCULATE(
+        COUNTROWS('Interactions'),
+        'Interactions'[escalation_validity] = "Valid_Escalation"
+    ),
+    0
+)`
+
+**Count Failed Escalations**
+`Count Failed Escalations =
+COALESCE(
+    CALCULATE(
+        COUNTROWS('Interactions'),
+        'Interactions'[escalation_validity] = "Failed_Escalation"
+    ),
+    0
+)`
+
+**Count Missed Escalations**
+`Count Missed Escalations =
+COALESCE(
+    CALCULATE(
+        COUNTROWS('Interactions'),
+        'Interactions'[escalation_validity] = "Missed_Escalation"
+    ),
+    0
+)`
+
+**Count Invalid Dispositions**
+`Count Invalid Dispositions =
+COALESCE(
+    CALCULATE(
+        COUNTROWS('Interactions'),
+        'Interactions'[escalation_validity] = "Invalid_Disposition"
+    ),
+    0
+)`
+
+
 ---
 
 ## 2. Governance & Compliance (Gap Metrics)
@@ -55,13 +96,58 @@ The model is designed to prevent metric distortion caused by cross-filtering and
 *Measures determining the qualitative health of the operation.*
 
 **Governance Accuracy**
-`Governance Accuracy = DIVIDE([Count Valid Escalations], [Total Risk Interactions], 0)`
+`Governance Accuracy = 
+VAR RiskTotal = [Total Risk Interactions]
+VAR ValidCount = COALESCE([Count Valid Escalations], 0)
+RETURN
+IF(
+    RiskTotal = 0,
+    BLANK(),
+    DIVIDE(ValidCount, RiskTotal)
+)`
 
 **Operational Accuracy**
-`Operational Accuracy = VAR Correct_Decisions = [Count Valid Escalations] + CALCULATE([Total Interactions], 'Interactions'[escalation_validity] = "No_Escalation_Required") RETURN DIVIDE(Correct_Decisions, [Total Interactions], 0)`
+`Operational Accuracy = 
+VAR TotalInt = [Total Interactions]
+VAR Correct_Decisions =
+    COALESCE([Count Valid Escalations], 0) +
+    CALCULATE(
+        [Total Interactions],
+        'Interactions'[escalation_validity] = "No_Escalation_Required"
+    )
+RETURN
+IF(
+    TotalInt = 0,
+    BLANK(),
+    DIVIDE(Correct_Decisions, TotalInt)
+)`
 
 **Governance Accuracy Status**
-`Governance Accuracy Status = VAR CurrentAccuracy = [Governance Accuracy] RETURN SWITCH(TRUE(), ISBLANK(CurrentAccuracy), "No Data", CurrentAccuracy >= 0.95, "Excellent", CurrentAccuracy >= 0.90, "Watch", CurrentAccuracy >= 0.85, "At Risk", "Critical")`
+`Governance Accuracy Status = 
+VAR RiskTotal = [Total Risk Interactions]
+VAR Acc = [Governance Accuracy]
+RETURN
+SWITCH(
+    TRUE(),
+    RiskTotal = 0, "Zero Risk",        
+    Acc >= 0.95, "Optimal",
+    Acc >= 0.90, "Moderate Risk",
+    Acc >= 0.85, "High Risk",
+    "Critical"
+)`
+
+**Operational Accuracy Status**
+`Operational Accuracy Status = 
+VAR CurrentAccuracy = [Operational Accuracy]
+RETURN
+SWITCH(
+    TRUE(),
+    ISBLANK(CurrentAccuracy), "No Data",
+    CurrentAccuracy >= 0.95, "Optimal",
+    CurrentAccuracy >= 0.90, "Moderate Risk",
+    CurrentAccuracy >= 0.85, "High Risk",
+    "Critical"
+)`
 
 ---
 
