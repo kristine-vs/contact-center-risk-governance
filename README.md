@@ -70,13 +70,16 @@ This locks all governance metrics to validated risk interactions.
 
 ```dax
 Risk Compliance Gap % =
-VAR RiskFailures =
+VAR Critical Escalation Failures = 
 CALCULATE(
-[Total Risk Interactions],
-KEEPFILTERS('Interactions'[escalation_validity] IN {"Missed_Escalation","Failed_Escalation"})
+    COUNTROWS('Interactions'),
+    KEEPFILTERS(
+        'Interactions'[escalation_validity] 
+            IN {"Missed_Escalation", "Failed_Escalation"}
+    ),
+    'Interactions'[Is_Risk] = TRUE()
 )
-RETURN
-DIVIDE(RiskFailures, [Total Risk Interactions], 0)
+DIVIDE([Critical Escalation Failures], [Total Risk Interactions], 0)
 ```
 
 This guarantees that compliance gaps remain mathematically valid.
